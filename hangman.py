@@ -2,7 +2,7 @@
 import random
 import time
 playAgain = "yes"
-while playAgain == "yes":
+while playagain == "yes":
     print "Enter if you are"
     print "1.) Playing with two or more players"
     playerAmount = raw_input("2.) Playing with one person: ")
@@ -10,7 +10,7 @@ while playAgain == "yes":
         word = raw_input("Enter a word you want the user to guess: ")
         for i in range(0, 45):
             print ""
-    elif playerAmount == "2":
+    elif playerAmount == "2"
         ##Random word gen
         print "Loading random word..."
         time.sleep(2)
@@ -20,7 +20,7 @@ while playAgain == "yes":
             word = "jazz"
         elif wordChooser == 2:
             word = "brother"
-        elif wordChooser == 3:
+        elif wordChooser == 3
             word = "python"
         elif wordChooser == 4:
             word = "fantastic"
@@ -80,7 +80,7 @@ while playAgain == "yes":
     #Displays word interface
     print "Word: " +"".join(display)
     print "Lives: " + str(lives)
-    while guess != "Q":
+    while guess != "Q"
         guess = raw_input("Make your guess: ")
         print ""
         print "---------------------------------------------------------"
