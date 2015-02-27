@@ -2,77 +2,44 @@
 import random
 import time
 playAgain = "yes"
-while playagain == "yes":
+while playAgain == "yes":
+    letUsed = []
     print "Enter if you are"
-    print "1.) Playing with two or more players"
-    playerAmount = raw_input("2.) Playing with one person: ")
-    if playerAmount == "1":
+    print "1.) Playing by yourself"
+    playerAmount = raw_input("2.) Playing with two or more players: ")
+    if playerAmount == "2":
         word = raw_input("Enter a word you want the user to guess: ")
         for i in range(0, 45):
             print ""
-    elif playerAmount == "2"
+    elif playerAmount == "1":
         ##Random word gen
         print "Loading random word..."
         time.sleep(2)
-        wordChooser = random.randint(1, 20)
+        #This will set lineChooser to a random interger between 0 and 232.
+        lineChooser = random.randint(0, 232)
         
-        if wordChooser == 1:
-            word = "jazz"
-        elif wordChooser == 2:
-            word = "brother"
-        elif wordChooser == 3
-            word = "python"
-        elif wordChooser == 4:
-            word = "fantastic"
-        elif wordChooser == 5:
-            word = "tennis"
-        elif wordChooser == 6:
-            word = "chair"
-        elif wordChooser == 7:
-            word = "table"
-        elif wordChooser == 8:
-            word = "tie"
-        elif wordChooser == 9:
-            word = "bucket"
-        elif wordChooser == 10:
-            word = "clock"
-        elif wordChooser == 11:
-            word = "hangman"
-        elif wordChooser == 12:
-            word = "chess"
-        elif wordChooser == 13:
-            word = "planet"
-        elif wordChooser == 14:
-            word = "noodles"
-        elif wordChooser == 15:
-            word = "pancake"
-        elif wordChooser == 16:
-            word = "hair"
-        elif wordChooser == 17:
-            word = "computer"
-        elif wordChooser == 18:
-            word = "bookstore"
-        elif wordChooser == 19:
-            word = "church"
-        elif wordChooser == 20:
-            word = "glass"
-        else:
-            print "Error: RandomInt is not a number that suits the if"
+        #Here we read from the words.txt file to choose a random word!
+        word_file = open("words.txt", "r")
+        #Here we set word equal to a random line from the file words. 
+        word = word_file.readlines()[lineChooser]
+        #Here we set word equal to the whole word except for the last character because for some reason it genrates an extra file when reading from a file.
+        word = word[0:len(word)-1]
+        word_file.close()
     else:
-        print "Sorry but " +playerAmount +" isn't valid. Please enter 1 or two next time!"
+        print "Please enter 1 or 2 next time not " +playerAmount
         time.sleep(3)
         exit(0)
+        
     print ""
     print "Hangman by: Nick Parsons"
     print "Please note that entering a capital Q will quit the game!"
     print ""
-    print "You have 7 lives. Good luck!"
+    print "You have 11 lives. Good luck!"
     print ""
     wordList = []
     display = []
     guess = None
-    i = 0
-    lives = 7
+    lives = 11
     for i in range(0, len(word)):
         wordList.append(word[i])
                 
@@ -80,8 +47,10 @@ while playagain == "yes":
     #Displays word interface
     print "Word: " +"".join(display)
     print "Lives: " + str(lives)
-    while guess != "Q"
+    print "Letters Used: You have used no letters!"
+    while guess != "Q":
         guess = raw_input("Make your guess: ")
+        letUsed.append(guess)
         print ""
         print "---------------------------------------------------------"
         #Here we set our marker back to 0. This will make sure when we guess again it is set to 0!
@@ -100,8 +69,9 @@ while playagain == "yes":
             print "---------------------------------------------------------"
             print "Word: " +"".join(display)
             print "Lives: " + str(lives)
+            print "Letters used: " +", ".join(letUsed)
 
-            if lives <= 0 and guess != "hack(force.win(hangman))" and guess != hack(add.lives()) and guess != hack(show.text(ans)):
+            if lives <= 0 and guess != "hack(force.win(hangman))":
                 print "You lost!"
                 guess = "Q"
 
@@ -115,6 +85,25 @@ while playagain == "yes":
                 lives += 100
 
             elif guess == "hack(show.text(ans))":
+                print ""
+                time.sleep(2)
+                print "Executing hack..."
+                time.sleep(3)
+                for i in range(0, 10):
+                    print "432865465723hgdfYYGFhkfhdHFGYYU&^53ygjd"
+                    print "UKdlhdksl&#84o5835938759HFhfgfhfbfd.s>>fd.fu3"
+                    print "uduDJdnnsla;fnsnfsnska&36%vVVmd"
+                    print "JavaToPython.words(acces).CODE(327465663~@VVMAv267GDFvdvstYSydu{key:AccesPoint event})"
+                print ""
+                print "Decompiling word..."
+                time.sleep(2.5)
+                print ""
+                print "Accesing main python variables..."
+                time.sleep(2)
+                print ""
+                print "unwrapping vMAv python PDY..."
+                time.sleep(1.5)
+                print "Done!..."
                 print "THE WORD ANSWER IS: " +word
 
         elif i == 1:
@@ -122,6 +111,7 @@ while playagain == "yes":
             print "Correct!"
             print "Word: " +"".join(display)
             print "Lives: " + str(lives)
+            print "Letters used: " +", ".join(letUsed)
 
             if currentWord == wordList:
                 print "Well done you guessed the word!"
