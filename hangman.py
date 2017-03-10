@@ -1,4 +1,4 @@
-#Code done by Nick Parsons
+#Code done by clapynick
 import random
 import time
 playAgain = "yes"
